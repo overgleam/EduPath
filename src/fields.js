@@ -2,6 +2,8 @@ export const fields = [
     {
       name: 'age',
       label: 'Age',
+      group: 'demographics',
+      description: 'Your age as enrollee in University of Cebu',
       options: [
         { label: "17", value: 17 },
         { label: "18", value: 18 },
@@ -9,11 +11,14 @@ export const fields = [
         { label: "20", value: 20 },
         { label: "21", value: 21 },
         { label: "22", value: 22 },
+        { label: "23", value: 23 },
       ]
     },
     {
       name: 'langgpa',
       label: 'Language GPA',
+      group: 'academicRecords',
+      description: 'Your Language GPA',
       options: [
         { label: "75", value: 75 },
         { label: "76", value: 76 },
@@ -45,7 +50,11 @@ export const fields = [
     {
       name: 'filgpa',
       label: 'Filipino GPA',
+      group: 'academicRecords',
+      description: 'Your Filipino GPA',
       options: [
+        { label: "75", value: 75 },
+        { label: "76", value: 76 },
         { label: "77", value: 77 },
         { label: "78", value: 78 },
         { label: "79", value: 79 },
@@ -74,6 +83,8 @@ export const fields = [
     {
       name: 'scigpa',
       label: 'Science GPA',
+      group: 'academicRecords',
+      description: 'Your Science GPA',
       options: [
         { label: "75", value: 75 },
         { label: "76", value: 76 },
@@ -105,6 +116,8 @@ export const fields = [
     {
       name: 'mathgpa',
       label: 'Math GPA',
+      group: 'academicRecords',
+      description: 'Your Math GPA',
       options: [
         { label: "75", value: 75 },
         { label: "76", value: 76 },
@@ -136,6 +149,8 @@ export const fields = [
     {
       name: 'shs_gpa',
       label: 'SHS GPA',
+      group: 'academicRecords',
+      description: 'Your Senior High School GPA',
       options: [
         { label: "75", value: 75 },
         { label: "76", value: 76 },
@@ -166,34 +181,19 @@ export const fields = [
     },
     {
       name: 'sex',
-      label: 'Sex',
+      label: 'Gender',
+      group: 'demographics',
+      description: 'Select your gender',
       options: [
         { label: "Female", value: "F" },
         { label: "Male", value: "M" }
       ]
     },
     {
-      name: 'course',
-      label: 'Course',
-      options: [
-        { label: "BSHM", value: "BSHM" },
-        { label: "BEED", value: "BEED" },
-        { label: "BSCA", value: "BSCA" },
-        { label: "BSME", value: "BSME" },
-        { label: "BSED", value: "BSED" },
-        { label: "BSCE", value: "BSCE" },
-        { label: "BSCS", value: "BSCS" },
-        { label: "BSBA", value: "BSBA" },
-        { label: "BSIT", value: "BSIT" },
-        { label: "BSCOE", value: "BSCOE" },
-        { label: "BSCRIM", value: "BSCRIM" },
-        { label: "BSA", value: "BSA" },
-        { label: "BSMA", value: "BSMA" }
-      ]
-    },
-    {
       name: 'strand',
       label: 'Strand',
+      group: 'educationalBackground',
+      description: 'Your Senior High School Strand',
       options: [
         { label: "ABM", value: "ABM" },
         { label: "GAS", value: "GAS" },
@@ -205,6 +205,8 @@ export const fields = [
     {
       name: 'living_with_family',
       label: 'Living with Family',
+      group: 'demographics',
+      description: 'Do you live with your family?',
       options: [
         { label: "Yes", value: "Y" },
         { label: "No", value: "N" }
@@ -213,37 +215,45 @@ export const fields = [
     {
       name: 'family_income_category',
       label: 'Family Income Category',
+      group: 'demographics',
+      description: 'Your family income level',
       options: [
-        { label: "Lower Middle Income", value: "lower middle income" },
-        { label: "Middle Income", value: "middle income" },
+        { label: "Lower Income Class", value: "lower income class" },
+        { label: "Lower Middle Income Class", value: "lower middle income" },
+        { label: "Middle Income Class", value: "middle income" },
+        { label: "Upper Middle Income Class", value: "upper middle income" },
         { label: "High Income Class", value: "high income class" },
-        { label: "Upper Middle Class", value: "upper middle class" },
-        { label: "Lower Income Class", value: "lower income class" }
       ]
     },
     {
       name: 'shs_graduate_school_type',
-      label: 'SHS Graduate School Type',
+      label: 'SHS School Performance',
+      group: 'educationalBackground',
+      description: 'Overall performance of during your SHS',
       options: [
         { label: "Less Performing", value: "less performing" },
+        { label: "Average Performing", value: "average performing" },
         { label: "Above Average Performing", value: "above average performing" },
         { label: "Excellent Performing", value: "excellent performing" },
-        { label: "Average Performing", value: "average performing" }
       ]
     },
     {
       name: 'entrance_exam',
       label: 'Entrance Exam',
+      group: 'educationalBackground',
+      description: 'Your entrance exam performance',
       options: [
+        { label: "Less Average", value: "less average" },
         { label: "Average", value: "average" },
         { label: "Above Average", value: "above average" },
-        { label: "Less Average", value: "less average" },
         { label: "Superior", value: "superior" }
       ]
     },
     {
       name: 'acad_support',
       label: 'Academic Support',
+      group: 'demographics',
+      description: 'Who supports your education?',
       options: [
         { label: "Self-Supporting", value: "self-supporting" },
         { label: "Both", value: "both" },
@@ -253,6 +263,8 @@ export const fields = [
     {
       name: 'scholarship_type',
       label: 'Scholarship Type',
+      group: 'demographics',
+      description: 'Your scholarship type',
       options: [
         { label: "Non-Scholar", value: "non-scholar" },
         { label: "External Government", value: "external goverment" },
@@ -263,6 +275,8 @@ export const fields = [
     {
       name: 'work_exp',
       label: 'Work Experience',
+      group: 'educationalBackground',
+      description: 'Your work experience background',
       options: [
         { label: "Yes", value: "Y" },
         { label: "No", value: "N" }
@@ -270,10 +284,12 @@ export const fields = [
     },
     {
       name: 'with_honors',
-      label: 'With Honors',
+      label: 'Honors Received',
+      group: 'educationalBackground',
+      description: 'Did you receive honors in SHS?',
       options: [
-        { label: "YES", value: "Y" },
-        { label: "NO", value: "N" }
+        { label: "Yes", value: "Y" },
+        { label: "No", value: "N" }
       ]
     },
   ];

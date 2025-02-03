@@ -14,7 +14,7 @@ export function DarkModeToggle() {
     const [color, setColor] = useState("#ffffff");
 
     useEffect(() => {
-        setColor(theme === "dark" ? "#ffffff" : "#000000");
+        setColor(theme === "dark" ? "#ffffff" : "#EFBF04");
     }, [theme]);
 
     return (

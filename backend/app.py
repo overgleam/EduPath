@@ -23,24 +23,52 @@ def submit():
         return jsonify({'message': 'No data received!'}), 400
 
     try:
-        # Create a pandas DataFrame from the received JSON (assumes one record)
-        input_df = pd.DataFrame([data])
-        print("\nReceived DataFrame:")
-        print(input_df.to_string(index=False))
+        # Define the list of course options.
+        courses = [
+            "BSHM","BEED","BSCA","BSME",
+            "BSED","BSCE","BSCS","BSBA",
+            "BSIT","BSCOE","BSCRIM","BSA","BSMA"
+        ]
         
-        # Generate prediction using the loaded model.
-        prediction = model.predict(input_df)
-        input_df['prediction'] = prediction
+        results = []
+
+        # Loop over each course option
+        for course in courses:
+            # Make a copy of the incoming data and set the course field.
+            new_input = data.copy()
+            new_input['course'] = course
+            
+            # Create a DataFrame from the current input.
+            df = pd.DataFrame([new_input])
+            
+            # Generate prediction using the loaded model.
+            prediction = model.predict(df)
+            
+            # Try to get the probability using predict_proba
+            try:
+                # For binary classifiers we assume index 1 corresponds to "completion"
+                probs = model.predict_proba(df)
+                if probs.shape[1] == 2:
+                    probability = probs[0][1]
+                else:
+                    # For multi-class: use the probability of the predicted class.
+                    probability = probs[0][prediction[0]]
+            except Exception as err:
+                print("Predict proba not supported:", err)
+                probability = None
+
+            # Build a minimal result record with only the necessary fields.
+            result_record = {
+                'course': course,   
+                'prediction': prediction[0],
+                'probability': probability
+            }
+            results.append(result_record)
         
-        # Print the DataFrame with prediction to the terminal.
-        print("\nDataFrame with Prediction:")
-        print(input_df.to_string(index=False))
-        
-        # Return the input data along with the prediction as JSON.
-        result = input_df.to_dict(orient='records')
+        # Return all the prediction records back to the frontend.
         return jsonify({
             'message': 'Prediction generated successfully!',
-            'data': result
+            'data': results
         })
     except Exception as e:
         print("Error processing data:", str(e))
